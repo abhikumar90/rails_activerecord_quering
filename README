@@ -1,0 +1,28 @@
+belongs_to associations:
+-------------------------
+
+class Person < ActiveRecord::Base
+  belongs_to :role
+end
+
+class Role < ActiveRecord::Base
+  has_many :person
+end
+
+how to use ActiveRecord methods to query your database:
+
+Person.all
+
+along with the SQL that is generated:
+
+SELECT "person".* FROM "person";
+
+and what the resulting data would look like:
+
+id 	name 	  role_id
+1 	Wendell 	1
+2 	Christie 	1
+3 	Eve 	    2
+
+As you can see, we have a few people in our table, each with a role_id that corresponds to the primary key of a row in the roles table.
+In addition, roles have a name and a boolean column called billable.
